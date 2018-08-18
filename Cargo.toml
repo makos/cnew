@@ -1,6 +1,11 @@
 [package]
 name = "cnew"
-version = "0.1.0" # Change VERSION in main.rs and http
+version = "0.1.0" # Change 
+description = "Create simple C directory templates"
 authors = ["Mateusz Makowski <matmakos@gmail.com>"]
+publish = false
+readme = "README.md"
+repository = ""
+license = "MIT"
 
 [dependencies]
