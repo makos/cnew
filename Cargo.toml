@@ -9,3 +9,7 @@ repository = ""
 license = "MIT"
 
 [dependencies]
+
+[[bin]]
+name = "cnew"
+path = "src/main.rs"

@@ -109,6 +109,6 @@ fn show_help(bin_name: &String) {
 }
 
 fn version_info() {
-    println!("cnew v0.1.0");
+    println!("cnew v0.1.0 by makos <Mateusz Makowski>, licensed under the MIT license.");
     exit(0);
 }
