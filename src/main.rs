@@ -18,12 +18,14 @@ fn main() {
         }
     }
     let src_dir = dir_name.to_owned() + "/src";
+    let obj_dir = src_dir.clone() + "/obj";
     let inc_dir = dir_name.to_owned() + "/include";
     let root_path = Path::new(dir_name);
     let src_path = Path::new(&src_dir);
     let inc_path = Path::new(&inc_dir);
+    let obj_path = Path::new(&obj_dir);
 
-    let paths = vec![root_path, src_path, inc_path];
+    let paths = vec![root_path, src_path, inc_path, obj_path];
     build_dirs(&paths);
     populate_dirs(&paths);
     git_init(&paths);
@@ -34,6 +36,7 @@ fn main() {
 fn build_dirs(paths: &Vec<&Path>) {
     create_dir_all(paths[1]).expect("Error creating src dir");
     create_dir_all(paths[2]).expect("Error creating inc dir");
+    create_dir_all(paths[3]).expect("Error creating obj dir");
 }
 
 fn populate_dirs(paths: &Vec<&Path>) {
@@ -53,24 +56,26 @@ _DEPS=
 DEPS=$(patsubst %,$(IDIR)/%,$(_DEPS))
 
 # Object files here
-_OBJ=
+_OBJ=main.o
 OBJ=$(patsubst %,$(ODIR)/%,$(_OBJ))
 
 # Required libraries here
 LIBS=
 
 main: $(OBJ)
-    $(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+\t$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 $(ODIR)/%.o: $(SRCDIR)/%.c $(DEPS)
-    $(CC) -c -o $@ $< $(CFLAGS)
+\t$(CC) -c -o $@ $< $(CFLAGS)
 
 .PHONY: clean
 
 clean:
-    rm -f *.exe $(ODIR)/*.o";
+\trm -f *.exe $(ODIR)/*.o";
 
     let main = "\
+#include <stdio.h>
+
 int main(int argc, char *argv[])
 {
     printf(\"Hello world\\n\");
