@@ -5,7 +5,8 @@
 ### Preface
 
 This was created mostly for my personal usage. It can be customized by delving
-into the source code. I didn't try to make it too pretty or clever, it just works.
+into the source code. 
+I didn't try to make it too pretty or clever, it just works.
 
 ### Usage
 
